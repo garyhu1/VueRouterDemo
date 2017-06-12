@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>路由</title>
+		<script type="text/javascript" src="../js/vue.js" ></script>
+		<script type="text/javascript" src="../js/vue-router.js" ></script>
+	</head>
+	<body>
+		<div id="app">
+			<h2>动态路由</h2>
+			<p>
+				<router-link to='/user/foo'>User Foo</router-link>
+				<router-link to='/user/bar'>User Bar</router-link>
+			</p>
+			<router-view></router-view>
+		</div>
+	</body>
+	<script>
+		
+		var User = {
+			template: '<div>User {{ $route.params.id }}</div>'
+		}
+		
+		var routes = [
+		   { path: '/user/:id',component: User }
+		]
+		
+		var router = new VueRouter({
+			routes: routes
+		})
+		
+		new Vue({
+			el: "#app",
+			router: router
+		});
+	</script>
+</html>
